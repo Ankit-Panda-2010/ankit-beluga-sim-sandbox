@@ -52,4 +52,28 @@ public class ElevatorSubsystem extends SubsystemBase implements SimulatableMecha
     public boolean getMagSwitch() {
         return !magSwitch.get();
     }
+
+    public void stop(){
+        primaryElevatorMotor.stopMotor();
+    }
+
+    public void moveUp(double speed){
+        primaryElevatorMotor.set(speed);
+    }
+
+    public void moveDown(double speed){
+        primaryElevatorMotor.set(- Math.abs(speed));
+    }
+
+    public Command moveElevatorUp(double speed){
+        return startEnd(() -> moveUp(speed), this::stop);
+    }
+
+    public Command moveElevatorDown(double speed){
+        return startEnd(() -> moveDown(speed), this::stop);
+    }
+
+
+
+
 }

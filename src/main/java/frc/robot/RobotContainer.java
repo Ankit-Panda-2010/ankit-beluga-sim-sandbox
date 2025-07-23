@@ -138,6 +138,10 @@ public class RobotContainer {
                 () -> drive.withVelocityX(-joystick.getY() * TunerConstants.kSpeedAt12Volts.magnitude())
                         .withVelocityY(-joystick.getX() * TunerConstants.kSpeedAt12Volts.magnitude())
                         .withRotationalRate(-joystick.getTwist() * TunerConstants.MaFxAngularRate)));
+
+        joystick.button(1).whileTrue(elevator.moveElevatorUp(1));
+        joystick.button(2).whileTrue(elevator.moveElevatorDown(1));
+
     }
 
     /**
